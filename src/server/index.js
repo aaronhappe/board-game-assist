@@ -35,7 +35,7 @@ app.get('*', (req, res) => {
             res.status(200).send(render(
                 (
                     <Router context={{}} location={req.url}>
-                        <App gists={gists} />
+                        <App />
                     </Router>
                 ), gists
             ));

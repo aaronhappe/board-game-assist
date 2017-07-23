@@ -8,12 +8,10 @@
  */
 import React, { Component } from 'react';
 import Sidebar from './Sidebar';
-import SidebarItem from './SidebarItem';
-import Main from './Main';
-import Gist from './Gist';
-import Home from './Home';
+import SkiDayCount from './SkiDayCount';
 import { Link, Route } from 'react-router-dom';
 import $ from "jquery";
+// import '../client/scss/main.scss'
 
 const style = {
     display: 'flex',
@@ -53,9 +51,11 @@ class App extends React.Component {
 
     return (
       <div>
+        <SkiDayCount />
+        asdf
         <div>Seconds Elapsed {this.state.secondsElapsed}</div>
-
-        <ul id="messages"></ul>
+        
+        <ul id="messages">df</ul>
 
         <form action="">
           <input id="m" autocomplete="off" /><button>Send</button>
