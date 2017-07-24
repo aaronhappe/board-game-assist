@@ -8,8 +8,6 @@ import sourceMapSupport from 'source-map-support';
 import render from './render';
 import fetch from 'node-fetch';
 
-console.log('test 4');
-
 const routes = [
     '/',
     '/g/:gistId'
@@ -25,24 +23,14 @@ app.use('/static', express.static('./dist'));
 
 app.get('*', (req, res) => {
     const match = routes.reduce((acc, route) => matchPath(req.url, route, { exact: true }) || acc, null);
-    if (!match) {
-        res.status(404).send(render(<NoMatch />));
-        return;
-    }
-    fetch('https://api.github.com/gists')
-        .then(r => r.json())
-        .then(gists => {
+
             res.status(200).send(render(
                 (
                     <Router context={{}} location={req.url}>
                         <App />
                     </Router>
-                ), gists
+                )
             ));
-        }).catch(err => {
-            console.error(err);
-            res.status(500).send(render(<Error />));
-        });
 });
 
 io.on('connection', function(socket){

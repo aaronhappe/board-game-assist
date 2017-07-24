@@ -13,38 +13,39 @@ import { Link, Route } from 'react-router-dom';
 import $ from "jquery";
 // import '../client/scss/main.scss'
 
-const style = {
-    display: 'flex',
-    alignItems: 'stretch'
-};
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {secondsElapsed: 0};
+    this.state = {dieVal: 0};
   }
 
-  tick() {
-    this.setState((prevState) => ({
-      secondsElapsed: prevState.secondsElapsed + 1
+  dieRoll() {
+
+    var dieInitNum = Math.random(),
+    dieAns = Math.floor((dieInitNum * 6) + 1);
+    this.setState(() => ({
+      dieVal: dieAns
     }));
+    return document.forms["dieSubmit"].submit();
   }
 
   componentDidMount() {
-    this.interval = setInterval(() => this.tick(), 1000);
+    this.dieRoll();
     var socket = io();
     socket.on('connect', function(){
+      console.log('connected');
     });
-
+    
       $('form').submit(function(){
         socket.emit('chat message', $('#m').val());
         $('#m').val('');
-        return false;
+        return true;
       });
-      socket.on('chat message', function(msg){
-        $('#messages').append($('<li>').text(msg));
+      socket.on('chat message', function(returnDie){
+        $('#messages').append($('<li>').text(returnDie));
       });
-
+    
   }
 
   render() {
@@ -52,14 +53,13 @@ class App extends React.Component {
     return (
       <div>
         <SkiDayCount />
-        asdf
-        <div>Seconds Elapsed {this.state.secondsElapsed}</div>
+        <div>Die Value: {this.state.dieVal}</div>
         
-        <ul id="messages">df</ul>
+          <ul id="messages"></ul>
 
-        <form action="">
-          <input id="m" autocomplete="off" /><button>Send</button>
-        </form>
+          <form id="dieSubmit" action="">
+            <input id="m" autocomplete="off" />
+          </form>
 
       </div>
     );
