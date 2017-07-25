@@ -1,5 +1,19 @@
-body {
-	p	{
-		background: #00aad2;
+#app {
+font-family: Helvetica;
+	#dieSubmit {
+		display: none;
+	}
+
+	.rollButton {
+		padding: .5em 1em;
+		background: #308495;
+		display: block;
+		text-align: center;
+		margin: 0 auto;
+		width: 25%;
+		color: white;
+		border-radius: 2px;
+		text-transform: uppercase;
+		cursor: pointer;
 	}
 }

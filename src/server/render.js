@@ -12,14 +12,13 @@ import React from 'react';
 export default (renderMe, gists) => `<!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <title></title>
-        
+      <meta charset="UTF-8">
+      <title></title>
+      <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
     </head>
     <body>
-            <script src="/static/socket.io.js"></script>
-              <div id="app">${renderToString(renderMe)}</div>
-            <script src="/static/client.js"></script>
-            
+      <script src="/static/socket.io.js"></script>
+        <div id="app">${renderToString(renderMe)}</div>
+      <script src="/static/client.js"></script>
     </body>
 </html>`;

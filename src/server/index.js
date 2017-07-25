@@ -9,8 +9,8 @@ import render from './render';
 import fetch from 'node-fetch';
 
 const routes = [
-    '/',
-    '/g/:gistId'
+'/',
+'/g/:gistId'
 ];
 
 sourceMapSupport.install();
@@ -22,21 +22,21 @@ var io = require('socket.io')(server);
 app.use('/static', express.static('./dist'));
 
 app.get('*', (req, res) => {
-    const match = routes.reduce((acc, route) => matchPath(req.url, route, { exact: true }) || acc, null);
-
-            res.status(200).send(render(
-                (
-                    <Router context={{}} location={req.url}>
-                        <App />
-                    </Router>
-                )
-            ));
+const match = routes.reduce((acc, route) => matchPath(req.url, route, { exact: true }) || acc, null);
+  res.status(200).send(render(
+    (
+      <Router context={{}} location={req.url}>
+        <App />
+      </Router>
+    )
+  ));
 });
 
 io.on('connection', function(socket){
-  socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
-  });
+socket.on('chat message', function(msg){
+  console.log(msg)
+io.emit('chat message', msg);
+});
 });
 
 server.listen(8080, () => console.log('Demo app listening on port 8080'));

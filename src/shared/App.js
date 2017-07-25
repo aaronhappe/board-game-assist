@@ -18,12 +18,15 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {dieVal: 0};
+    
+    this.handleDieRoll = this.handleDieRoll.bind(this);
   }
 
-  dieRoll() {
+  handleDieRoll() {
 
     var dieInitNum = Math.random(),
     dieAns = Math.floor((dieInitNum * 6) + 1);
+
     this.setState(() => ({
       dieVal: dieAns
     }));
@@ -31,7 +34,6 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.dieRoll();
     var socket = io();
     socket.on('connect', function(){
       console.log('connected');
@@ -42,25 +44,26 @@ class App extends React.Component {
         $('#m').val('');
         return true;
       });
+
       socket.on('chat message', function(returnDie){
+        console.log(returnDie);
         $('#messages').append($('<li>').text(returnDie));
       });
-    
   }
 
   render() {
 
     return (
       <div>
-        <SkiDayCount />
-        <div>Die Value: {this.state.dieVal}</div>
-        
+        <div>Die Value: </div>
+          <span className="rollButton" onClick={this.handleDieRoll}>
+            roll die
+          </span>
           <ul id="messages"></ul>
 
           <form id="dieSubmit" action="">
-            <input id="m" autocomplete="off" />
+            <input id="m" autocomplete="off" value="{this.state.dieVal}" />
           </form>
-
       </div>
     );
   }
