@@ -1,7 +1,8 @@
+
 import React from 'react';
 
 export default () => (
-  <div>
-    <h1>HOME PAGE!!! :D</h1>
-  </div>
+    <div>
+        <h1>Outline!</h1>
+    </div>
 );
