@@ -21,29 +21,37 @@ const style = {
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {secondsElapsed: 0};
+    this.state = {diceRoll: 0};
   }
 
-  tick() {
-    this.setState((prevState) => ({
-      secondsElapsed: prevState.secondsElapsed + 1
-    }));
+  rollDie() {
+    var rando = Math.random(),
+    rolled = 1 + Math.floor(rando * 6);
+    console.log(rolled);
+    this.setState((prevState, props) => {
+      console.log(rolled);
+      return {diceRoll: rolled};
+    });
+    console.log(this.state.diceRoll);
+    // return diceRoll
   }
 
   componentDidMount() {
-    this.interval = setInterval(() => this.tick(), 1000);
-    var socket = io();
-    socket.on('connect', function(){
-    });
+    console.log('here? ');
+    this.rollDie();
+    // var socket = io();
+    // socket.on('connect', function(){
+    // });
 
-      $('form').submit(function(){
-        socket.emit('chat message', $('#m').val());
-        $('#m').val('');
-        return false;
-      });
-      socket.on('chat message', function(msg){
-        $('#messages').append($('<li>').text(msg));
-      });
+      // $('form').submit(function(){
+      //   socket.emit('chat message', $('#m').val());
+      //   $('#m').val('');
+      //   return false;
+      // });
+      // socket.on('chat message', function(msg){
+      //   $('#messages').append($('<li>').text(msg));
+      // });
+
 
   }
 
@@ -53,14 +61,16 @@ class App extends React.Component {
       <div>
         <SkiDayCount />
         asdf
-        <div>Seconds Elapsed {this.state.secondsElapsed}</div>
-        
+        <div>Dice Roll: {this.state.diceRoll}</div>
+        {
+        /*
         <ul id="messages">df</ul>
 
         <form action="">
           <input id="m" autocomplete="off" /><button>Send</button>
         </form>
-
+        */
+        }
       </div>
     );
   }
