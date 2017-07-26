@@ -13,7 +13,7 @@ export default (renderMe, gists) => `<!DOCTYPE html>
 <html lang="en">
     <head>
       <meta charset="UTF-8">
-      <title></title>
+      <title>title will change dynamically, I am sure</title>
       <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
     </head>
     <body>

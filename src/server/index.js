@@ -33,10 +33,11 @@ const match = routes.reduce((acc, route) => matchPath(req.url, route, { exact: t
 });
 
 io.on('connection', function(socket){
-socket.on('chat message', function(msg){
-  console.log(msg)
-io.emit('chat message', msg);
-});
+	console.log('connnect');
+// socket.on('chat message', function(msg){
+//   console.log(msg)
+// io.emit('chat message', msg);
+// });
 });
 
 server.listen(8080, () => console.log('Demo app listening on port 8080'));
