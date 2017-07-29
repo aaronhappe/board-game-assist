@@ -117,7 +117,7 @@ gulp.task('css', ['images'], function() {
     postCssOpts.push(cssnano);
   }
 
-  return gulp.src(folder.src + 'client/scss/main.scss')
+  return gulp.src(folder.src + 'client/scss/**/*.scss')
     .pipe(sass({
       outputStyle: 'nested',
       imagePath: 'images/',
@@ -125,6 +125,7 @@ gulp.task('css', ['images'], function() {
       errLogToConsole: true
     }))
     .pipe(postcss(postCssOpts))
+    .pipe(concat('main.css'))
     .pipe(gulp.dest(folder.build + 'css/'));
 });
 
@@ -142,7 +143,7 @@ gulp.task('watch', function() {
   gulp.watch(folder.src + 'server/**/*', ['serve']);
 
   // javscript module changes
-  gulp.watch(folder.src + 'client/scss/*.scss', ['css']);
+  gulp.watch(folder.src + 'client/scss/**/*.scss', ['css']);
 
   // javscript module changes
   gulp.watch(folder.src + 'shared/**/*.js', ['jsclient']);
