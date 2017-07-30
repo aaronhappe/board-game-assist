@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SkiDayRow from './SkiDayRow';
 
-export default () => (
+export default ({days}) => (
 	<div className="ski-day-list">
 		<p>Ski Day List</p>
 		<div className="list-head">
@@ -14,12 +14,12 @@ export default () => (
 		<div className="list-body">
 			{
 
-			<SkiDayRow />
-			/*days.map((day, i) =>
+			
+			days.map((day, i) =>
 					<SkiDayRow key={i}
 						{...day}/>
-				)}*/
-			}
+				)}
+
 		</div> 
 	</div>
 )
