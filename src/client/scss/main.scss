@@ -1,7 +1,17 @@
-@import 'pages/ski-day-list.scss';
 @import 'partials/mixins';
 
+h1 {
+	color: #f6f6f6;
+	border-bottom: 1px solid #f6f6f6;
+}
+
+body {
+	background: #ccc;
+	text-align: center;
+}
+
 #app {
+
 font-family: Helvetica;
 	#dieSubmit {
 		display: none;
@@ -20,3 +30,4 @@ font-family: Helvetica;
 		cursor: pointer;
 	}
 }
+@import 'pages/ski-day-list.scss';

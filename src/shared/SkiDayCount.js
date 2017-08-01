@@ -20,19 +20,7 @@ class SkiDayCount extends React.Component {
 
     return (
       <div className="ski-day-count">
-        <div className="total-days">
-          <span>{this.props.total}</span>
-          <span>  days</span>
-        </div>
-        <div className="powder-days">
-          <span>{this.props.powder}</span>
-          <span>  days</span>
-        </div>
-        <div className="backcountry-days">
-          <span>{this.props.backcountry}</span>
-          <span>  hiking day</span>
-        </div>
-        <div>
+        <div className="percent-days">
           <span>
             {
               this.calcGoalProgress(this.props.total, 
@@ -43,6 +31,13 @@ class SkiDayCount extends React.Component {
       </div>
     );
   }
+}
+
+SkiDayCount.defaultProps = {
+  total: 50,
+  powder: 10,
+  sun: 15,
+  goal: 75
 }
 
 export default SkiDayCount;

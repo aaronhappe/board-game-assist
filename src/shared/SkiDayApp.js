@@ -29,14 +29,6 @@ class App extends React.Component {
         sun: true
       }
     ]};
-
-  }
-  rednerSkiDayList(){
-   /*if (location.href == "http://localhost:3000/") {
-      return (
-
-      )
-    }*/
   }
   countDays(filter) {
     return this.state.allSkiDays.filter(function(day){
@@ -48,20 +40,18 @@ class App extends React.Component {
     }).length
   }
   render() {
-    
     return (
       <div className="app">
-        <div>
           <SkiDayList days={this.state.allSkiDays} />
-          <SkiDayCount total={this.countDays()}
+          <SkiDayCount 
+            total={this.countDays()}
             powder={this.countDays("powder")}
             sun={this.countDays("sun")}
           />
           <Link to={'/form'}>
             FORM
           </Link>
-        </div>
-        <Route exact path="/form" component={AddDayForm}/>
+
       </div>
     )
   }

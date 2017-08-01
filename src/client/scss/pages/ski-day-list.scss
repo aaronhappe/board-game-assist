@@ -1,9 +1,24 @@
 @import '../partials/mixins';
 
 .ski-day-list {
+	background: white;
+	h3 {
+		font-size: 28px;
+		letter-spacing: .1em;
+		font-weight: bold;
+		text-transform: uppercase;
+		padding: 1em;
+		color: white;
+		background: #f7ce50;
+		margin: 0 0 2em 0;
+	}
+	.list-head span {
+		text-transform: uppercase;
+		font-size: 18px;
+		text-decoration: underline;
+	}
 	margin: 0 auto;
 	@include flexBox();
-	background: #ccc;
 	display: flex;
 	flex-direction: column;
 	width: 960px;
@@ -13,13 +28,17 @@
 		display: flex;
 	  span {
 	  	width: 25%;
+	  	align-self: center;
 	  }
 	}
 	.ski-day-row {
 		display: flex;
 		width: 100%;
+		height: 100px;
+		padding: 10px 0;
 		span {
 			width:25%;
+			align-self: center;
 		}
 	}
 }
